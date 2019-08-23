@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package teamfighttacticstracker;
+package teamfighttacticstracker.datatype;
 
+import teamfighttacticstracker.datatype.OriginClass;
 import java.util.ArrayList;
+import teamfighttacticstracker.TeamFightTacticsTracker;
 
 /**
  *
