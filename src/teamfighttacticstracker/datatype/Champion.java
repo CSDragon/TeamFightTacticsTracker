@@ -5,7 +5,6 @@
  */
 package teamfighttacticstracker.datatype;
 
-import teamfighttacticstracker.datatype.OriginClass;
 import java.util.ArrayList;
 import teamfighttacticstracker.TeamFightTacticsTracker;
 
@@ -15,9 +14,14 @@ import teamfighttacticstracker.TeamFightTacticsTracker;
  */
 public class Champion
 {
+    public static final int CHAMPLEVELS = 5;
+    public static final int LEVELSTOCK[] = {1,3,9};
+    public static int[] champNums;
 
     private String name;
     private int cost;
+    private int stock;
+    
     private ArrayList<OriginClass> OriClassList;
     
     public Champion(String _name, ArrayList<OriginClass> _OriClassList)
@@ -38,6 +42,19 @@ public class Champion
             OriClassList.add(oc);
             oc.addChampion(this);
         }
+        
+        stock = champNums[cost-1];
+    }
+    
+    
+    public void consumeStock(int star)
+    {
+        stock -= LEVELSTOCK[star-1];
+    }
+    
+    public void returnStock(int star)
+    {
+        stock += LEVELSTOCK[star-1];
     }
 
     

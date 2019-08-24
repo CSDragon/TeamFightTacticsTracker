@@ -10,6 +10,7 @@ import teamfighttacticstracker.datatype.OriginClass;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import teamfighttacticstracker.datatype.Player;
 import teamfighttacticstracker.datatype.PlayerLevel;
 import testbed.MultiButtonTestbed;
 
@@ -21,9 +22,8 @@ public class TeamFightTacticsTracker
 {
     public static ArrayList<OriginClass> allOriginClasses;
     public static ArrayList<Champion> allChamps;
-    public static final int CHAMPLEVELS = 5;
-    public static int[] champNums;
-    public static final int PLAYERLEVELS = 9;
+    
+    
     public static PlayerLevel[] playerLevels;
     
     
@@ -34,8 +34,8 @@ public class TeamFightTacticsTracker
     {
         allOriginClasses = new ArrayList<>();
         allChamps = new ArrayList<>();
-        champNums = new int[CHAMPLEVELS];
-        playerLevels = new PlayerLevel[PLAYERLEVELS];
+        Champion.champNums = new int[Champion.CHAMPLEVELS];
+        playerLevels = new PlayerLevel[Player.PLAYERLEVELS];
         
         try
         {
@@ -44,12 +44,12 @@ public class TeamFightTacticsTracker
             
             
             in = new BufferedReader(new FileReader("resources/champNums.txt"));
-            for(int i = 0; i<CHAMPLEVELS; i++)
-                champNums[i] = Integer.parseInt(in.readLine());
+            for(int i = 0; i<Champion.CHAMPLEVELS; i++)
+                Champion.champNums[i] = Integer.parseInt(in.readLine());
             in.close();
             
             in = new BufferedReader(new FileReader("resources/levelPercent.txt"));
-            for(int i = 0; i<PLAYERLEVELS; i++)
+            for(int i = 0; i<Player.PLAYERLEVELS; i++)
                 playerLevels[i] = new PlayerLevel(in.readLine());
             in.close();
             
@@ -86,6 +86,10 @@ public class TeamFightTacticsTracker
             System.out.println(allChamps.get(i).getName());
         }
         
+        
+        Player p = new Player(0);
+        
+        p.addPiece(allChamps.get(10), 2, Player.BOARD, 1);
 
         new MultiButtonTestbed();
         // TODO code application logic here

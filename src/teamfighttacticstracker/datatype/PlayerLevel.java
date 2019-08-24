@@ -5,8 +5,6 @@
  */
 package teamfighttacticstracker.datatype;
 
-import teamfighttacticstracker.TeamFightTacticsTracker;
-
 /**
  *
  * @author Chris
@@ -18,8 +16,8 @@ public class PlayerLevel
     public PlayerLevel(String s)
     {
         String[] strings = s.split(",");
-        percents = new double[TeamFightTacticsTracker.CHAMPLEVELS];
-        for(int i = 0; i<TeamFightTacticsTracker.CHAMPLEVELS; i++)
+        percents = new double[Champion.CHAMPLEVELS];
+        for(int i = 0; i<Champion.CHAMPLEVELS; i++)
             percents[i] = Double.parseDouble(strings[i]);
     }
 }
