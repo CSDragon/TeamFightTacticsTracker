@@ -51,15 +51,15 @@ public class Statbot
         //chance of rolling on a level
         double chance = (double)champ.getStock()/totalStock;
         
-        System.out.println(chance);
+        System.out.println(Statbot.percentCleanup(chance));
         
         chance  = chance * (TeamFightTacticsTracker.playerLevels[pl.getLevel()-1].getPercent(champ.getCost())/100); 
         
-        System.out.println(chance);
+        System.out.println(Statbot.percentCleanup(chance));
 
         chance = 1- (Math.pow(1-chance, 5));
 
-        System.out.println(chance +"\n");
+        System.out.println(Statbot.percentCleanup(chance) +"\n");
         
         return chance;
         

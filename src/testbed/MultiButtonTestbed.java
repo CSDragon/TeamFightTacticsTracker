@@ -125,15 +125,15 @@ public class MultiButtonTestbed implements ActionListener
         if(e.getSource() == but5)
         {
             Champion zed = Champion.getChampionByName("Zed");
- //           zed.consumeStock(3);
             
             Player p = TeamFightTacticsTracker.allPlayers.get(0);
             
             p.setLevel(p.getLevel()+1);
             
             Statbot.chanceOfSeeingChamp(p, zed);
-                    
-//            zed.returnStock(3);
+            zed.consumeStock(3);
+            Statbot.chanceOfSeeingChamp(p, zed);
+            zed.returnStock(3);
         }
 
     }

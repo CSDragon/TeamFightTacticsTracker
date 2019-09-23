@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import teamfighttacticstracker.datatype.Player;
 import teamfighttacticstracker.datatype.PlayerLevel;
 import testbed.MultiButtonTestbed;
+import testbed.WorldParser;
 
 /**
  *
@@ -85,8 +86,10 @@ public class TeamFightTacticsTracker
         allPlayers = new ArrayList<>();
         for(int i = 0; i<8; i++)
             allPlayers.add(new Player(i));
-        
 
+        
+        WorldParser.readFile();
+        
         new MultiButtonTestbed();
         // TODO code application logic here
         
