@@ -47,6 +47,65 @@ public class Champion
     }
     
     
+    public static Champion getChampionByName(String name)
+    {
+        //Yeah this could be done way differently but whatever
+        for(int i = 0; i< TeamFightTacticsTracker.allChamps.size(); i++)
+        {
+            if(TeamFightTacticsTracker.allChamps.get(i).name.equals(name))
+                return TeamFightTacticsTracker.allChamps.get(i);
+        }
+        return null;
+    }
+    
+    /**
+     * Returns all champions of a given cost, from a given array list
+     * @param cost Cost of champions we want
+     * @param champList The list of champs to search for
+     * @return A list of all champions that meat the criteria 
+     */
+    public static ArrayList<Champion> getAllChampsByCost(int cost, ArrayList<Champion> champList)
+    {
+        //not the best way to do this, but whatever
+        ArrayList<Champion> ret = new ArrayList<>();
+        for(int i = 0; i< champList.size(); i++)
+        {
+            if(champList.get(i).getCost()==cost)
+                ret.add(champList.get(i));
+        }
+        
+        return ret;
+    }
+    
+    /**
+     * Returns all champions of a given cost, from the list of all champions.
+     * @param cost Cost of the champions we want
+     * @return The list of champions
+     */
+    public static ArrayList<Champion> getAllChampsByCost(int cost)
+    {
+        return getAllChampsByCost(cost, TeamFightTacticsTracker.allChamps);
+    }
+    
+    public static ArrayList<Champion> getAllChampionsByOriginClass(OriginClass oriClass, ArrayList<Champion> champList)
+    {
+        ArrayList<Champion> ret = new ArrayList<>();
+        for(int i = 0; i<champList.size(); i++)
+        {
+            if (champList.get(i).getOriClassList().contains(oriClass))
+                ret.add(champList.get(i));
+        }
+        
+        return ret;
+    }
+    
+    public static ArrayList<Champion> getAllChampionsByOriginClass(OriginClass oriClass)
+    {
+        return getAllChampionsByOriginClass(oriClass, TeamFightTacticsTracker.allChamps);
+    }
+
+    
+    
     public void consumeStock(int star)
     {
         stock -= LEVELSTOCK[star-1];
@@ -56,7 +115,6 @@ public class Champion
     {
         stock += LEVELSTOCK[star-1];
     }
-
     
     /**
      * @return the name
@@ -71,7 +129,15 @@ public class Champion
     public void setName(String name) {
         this.name = name;
     }
-
+    
+    public int getCost() {
+        return cost;
+    }
+    
+    public int getStock() {
+        return stock;
+    }
+    
     /**
      * @return the OriClassList
      */
@@ -85,4 +151,5 @@ public class Champion
     public void setOriClassList(ArrayList<OriginClass> OriClassList) {
         this.OriClassList = OriClassList;
     }
+   
 }

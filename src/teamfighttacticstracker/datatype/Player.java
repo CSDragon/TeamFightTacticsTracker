@@ -60,4 +60,9 @@ public class Player
     {
         level = _level;
     }
+    
+    public int getLevel()
+    {
+        return level;
+    }
 }

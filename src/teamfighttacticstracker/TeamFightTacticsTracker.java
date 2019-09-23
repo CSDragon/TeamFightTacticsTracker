@@ -22,6 +22,7 @@ public class TeamFightTacticsTracker
 {
     public static ArrayList<OriginClass> allOriginClasses;
     public static ArrayList<Champion> allChamps;
+    public static ArrayList<Player> allPlayers;
     
     
     public static PlayerLevel[] playerLevels;
@@ -81,18 +82,16 @@ public class TeamFightTacticsTracker
             System.exit(0);
         }
         
-        for(int i = 0; i<allChamps.size(); i++)
-        {
-            System.out.println(allChamps.get(i).getName());
-        }
+        allPlayers = new ArrayList<>();
+        for(int i = 0; i<8; i++)
+            allPlayers.add(new Player(i));
         
-        
-        Player p = new Player(0);
-        
-        p.addPiece(allChamps.get(10), 2, Player.BOARD, 1);
 
         new MultiButtonTestbed();
         // TODO code application logic here
+        
     }
+    
+    
     
 }

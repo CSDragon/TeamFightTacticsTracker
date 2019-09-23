@@ -5,8 +5,14 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import teamfighttacticstracker.Statbot;
+import teamfighttacticstracker.TeamFightTacticsTracker;
+import teamfighttacticstracker.datatype.Champion;
+import teamfighttacticstracker.datatype.OriginClass;
+import teamfighttacticstracker.datatype.Player;
 
 
 /**
@@ -44,15 +50,15 @@ public class MultiButtonTestbed implements ActionListener
 
         
         //create and add the buttons you've made
-        but1 = new JButton("Load");
+        but1 = new JButton("Test Get Dude");
         but1.addActionListener(this);
         gameFrame.add(but1, BorderLayout.NORTH);
 
-        but2 = new JButton("Play");
+        but2 = new JButton("Get a bunch of dudes");
         but2.addActionListener(this);
         gameFrame.add(but2, BorderLayout.EAST);
 
-        but3 = new JButton("Stop");
+        but3 = new JButton("Stock totals");
         but3.addActionListener(this);
         gameFrame.add(but3, BorderLayout.WEST);
 
@@ -82,18 +88,53 @@ public class MultiButtonTestbed implements ActionListener
         //Put the button actions here.
         if(e.getSource() == but1)
         {
-
+            Champion test1 = Champion.getChampionByName("Vayne");
+            System.out.println(test1.getName());
         }
         if(e.getSource() == but2)
         {
+            ArrayList<Champion> test2 = Champion.getAllChampsByCost(2);
+            for(int i = 0; i<test2.size();i++)
+                System.out.println(test2.get(i).getName());
+            
+            System.out.println("");
+            
+            ArrayList<Champion> test3 = Champion.getAllChampionsByOriginClass(OriginClass.getOriginClassFromListByName("Ninja"));
+            for(int i = 0; i<test3.size();i++)
+                System.out.println(test3.get(i).getName());
             
         }
         if(e.getSource() == but3)
+        {
+            ArrayList<Champion> test3 = Champion.getAllChampionsByOriginClass(OriginClass.getOriginClassFromListByName("Ninja"));
+            for(int i = 0; i<test3.size();i++)
+                System.out.println(test3.get(i).getName());
+            
+            Champion zed = Champion.getChampionByName("Zed");
+            zed.consumeStock(4);
+            System.out.println(Statbot.getRemainingStock(test3) + "/" + Statbot.getTotalStock(test3));
+        }
         if(e.getSource() == but4)
+        {
+            ArrayList<Champion> test3 = Champion.getAllChampionsByOriginClass(OriginClass.getOriginClassFromListByName("Glacial"));
+            for(Champion champ: test3)
+            {
+                System.out.println(champ.getName() + champ.getCost());
+            }
+        }
         if(e.getSource() == but5)
-        //if(e.getSource() == but5)
-        //    GlobalSoundController.goBook("In Vento");
-        {}
+        {
+            Champion zed = Champion.getChampionByName("Zed");
+ //           zed.consumeStock(3);
+            
+            Player p = TeamFightTacticsTracker.allPlayers.get(0);
+            
+            p.setLevel(p.getLevel()+1);
+            
+            Statbot.chanceOfSeeingChamp(p, zed);
+                    
+//            zed.returnStock(3);
+        }
 
     }
     

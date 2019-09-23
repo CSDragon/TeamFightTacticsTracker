@@ -6,6 +6,7 @@
 package teamfighttacticstracker.datatype;
 
 import java.util.ArrayList;
+import teamfighttacticstracker.TeamFightTacticsTracker;
 
 /**
  *
@@ -58,6 +59,19 @@ public class OriginClass
         return null;
     }
     
+    public static OriginClass getOriginClassFromListByName(String name)
+    {
+        return getOriginClassFromListByName(name, TeamFightTacticsTracker.allOriginClasses);
+    }
+    
+    
+    public boolean equals(OriginClass other)
+    {
+        if(other.getName().equals(name))
+            return true;
+        else
+            return false;
+    }
     
     /**
      * @return the name
@@ -100,7 +114,6 @@ public class OriginClass
     public void setChampList(ArrayList<Champion> champList) {
         this.champList = champList;
     }
-    
     
     
 }
